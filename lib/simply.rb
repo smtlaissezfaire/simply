@@ -8,18 +8,16 @@ module Simply
       instance_eval(&block) if block_given?
     end
 
-    def p(text=nil, &block)
-      if block_given?
-        tag(:p, &block)
-      else
-        tag(:p, text)
-      end
+    def p(options={ }, &block)
+      tag(:p, options, &block)
     end
 
     SELF_CLOSING_TAGS.each do |tag|
-      define_method(tag) do
-        self_closing_tag(tag)
-      end
+      class_eval <<-HERE
+        def #{tag}(options={})
+          self_closing_tag(:#{tag}, options)
+        end
+      HERE
     end
 
     ####################
@@ -38,22 +36,34 @@ module Simply
 
   private
 
-    def tag(tag_name, value=nil, &block)
-      text opening_tag(tag_name)
-      value ? text(value) : instance_eval(&block)
+    def tag(tag_name, options={ }, &block)
+      text opening_tag(tag_name, options)
+      instance_eval(&block)
       text closing_tag(tag_name)
     end
 
-    def opening_tag(tag_name)
-      "<#{tag_name}>"
+    def opening_tag(tag_name, options={ })
+      if options.any?
+        "<#{tag_name} #{expand_options(options)}>"
+      else
+        "<#{tag_name}>"
+      end
     end
 
     def closing_tag(tag_name)
       "</#{tag_name}>"
     end
 
-    def self_closing_tag(tag_name)
-      @out << "<#{tag_name} />"
+    def self_closing_tag(tag_name, options={ })
+      if options.any?
+        text "<#{tag_name} #{expand_options(options)} />"
+      else
+        text "<#{tag_name} />"
+      end
+    end
+
+    def expand_options(options)
+      options.map { |key, value| "#{key}=\"#{value}\""}.join(" ")
     end
   end
 end

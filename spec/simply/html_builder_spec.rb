@@ -28,13 +28,17 @@ module Simply
     end
 
     it "should have a paragraph tag" do
-      @builder.p "foo"
-      @builder.to_s.should == "<p>foo</p>"
+      pending "TODO: Make these part of an object which derives/overrides Simply methods" do
+        @builder.p "foo"
+        @builder.to_s.should == "<p>foo</p>"
+      end
     end
 
     it "should contain the text inside the paragraph tags" do
-      @builder.p "bar baz"
-      @builder.to_s.should == "<p>bar baz</p>"
+      pending "TODO: Make these part of an object which derives/overrides Simply methods" do
+        @builder.p "bar baz"
+        @builder.to_s.should == "<p>bar baz</p>"
+      end
     end
 
     it "should have a paragraph tag which takes a block" do
@@ -52,6 +56,24 @@ module Simply
         @builder.send(tag)
         @builder.to_s.should == "<#{tag} />"
       end
+    end
+
+    it "should set options given to a self-closing tag" do
+      @builder.img :src => "foo"
+      @builder.to_s.should == "<img src=\"foo\" />"
+    end
+
+    it "should set two options to a self-closing tag" do
+      @builder.img :src => "foo", :alt => :some_text
+      @builder.to_s.should == "<img alt=\"some_text\" src=\"foo\" />"
+    end
+
+    it "should set options on a non-self closing tag (like a p)" do
+      @builder.p :class => :foo, :name => :something do
+        text "foo"
+      end
+
+      @builder.to_s.should == '<p class="foo" name="something">foo</p>'
     end
   end
 end
