@@ -1,6 +1,8 @@
 
 module Simply
   class HtmlBuilder
+    SELF_CLOSING_TAGS = [ :base, :meta, :link, :hr, :br, :param, :img, :area, :input, :col, :frame ]
+
     def initialize(&block)
       @out = ""
       instance_eval(&block) if block_given?
@@ -14,13 +16,17 @@ module Simply
       end
     end
 
-    def br
-      self_closing_tag :br
+    SELF_CLOSING_TAGS.each do |tag|
+      define_method(tag) do
+        self_closing_tag(tag)
+      end
     end
 
-    def hr
-      self_closing_tag :hr
-    end
+    ####################
+    #
+    #  Utilities
+    #
+    ####################
 
     def text(out)
       @out << out

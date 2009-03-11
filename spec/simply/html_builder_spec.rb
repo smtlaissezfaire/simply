@@ -44,6 +44,15 @@ module Simply
 
       @builder.to_s.should == "<p>foo</p>"
     end
+
+    SELF_CLOSING_TAGS = [ :base, :meta, :link, :hr, :br, :param, :img, :area, :input, :col, :frame ]
+
+    SELF_CLOSING_TAGS.each do |tag|
+      it "should have the tag #{tag}" do
+        @builder.send(tag)
+        @builder.to_s.should == "<#{tag} />"
+      end
+    end
   end
 end
 
