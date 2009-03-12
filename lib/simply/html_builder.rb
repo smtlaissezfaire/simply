@@ -32,18 +32,18 @@ module Simply
     end
 
     def xhtml_transitional
-      text '<?xml version="1.0" encoding="UTF-8"?>'
-      text '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
+      text HTMLTags::XML_ENCODING
+      text HTMLTags::TRANSITIONAL
     end
 
     def xhtml_strict
-      text '<?xml version="1.0" encoding="UTF-8"?>'
-      text '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
+      text HTMLTags::XML_ENCODING
+      text HTMLTags::STRICT
     end
 
     def xhtml_frameset
-      text '<?xml version="1.0" encoding="UTF-8"?>'
-      text '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">'
+      text HTMLTags::XML_ENCODING
+      text HTMLTags::FRAMESET
     end
     
     ####################
