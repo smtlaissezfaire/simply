@@ -28,7 +28,6 @@ module Simply
 
           tag(:#{tag}, options, &block)
         end
-      
       HERE
     end
     
