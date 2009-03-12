@@ -3,8 +3,13 @@ module Simply
     SELF_CLOSING_TAGS = HTMLTags::SELF_CLOSING_TAGS
     BLOCK_TAGS        = HTMLTags::BLOCK_TAGS
     
-    def initialize(&block)
+    def initialize(options={ }, &block)
       @out = ""
+
+      if locals_hash = options[:locals]
+        self.locals = locals_hash
+      end
+      
       instance_eval(&block) if block_given?
     end
 

@@ -163,6 +163,17 @@ module Simply
 
         @builder.to_s.should == "<ul><li>1</li><li>2</li><li>3</li></ul>"
       end
+
+      it "should take locals in the constructor" do
+        builder = HtmlBuilder.new(:locals => { :foo => "bar", :bar => "baz" }) do
+          ul do
+            li foo
+            li bar
+          end
+        end
+
+        builder.to_s.should == "<ul><li>bar</li><li>baz</li></ul>"
+      end
     end
   end
 end
