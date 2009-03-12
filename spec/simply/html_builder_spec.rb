@@ -79,6 +79,134 @@ module Simply
 
       @builder.to_s.should == '<p class="foo" name="something">foo</p>'
     end
+
+    BLOCK_TAGS = [
+      :html,
+      :head,
+      :title,
+      :style,
+      :script,
+      :noscript,
+      :body,
+      :div,
+      :p,
+      :ul,
+      :ol,
+      :li,
+      :dl,
+      :dt,
+      :dd,
+      :address,
+      :pre,
+      :blockquote,
+      :ins,
+      :del,
+      :a,
+      :span,
+      :bdo,
+      :em,
+      :strong,
+      :dfn,
+      :code,
+      :samp,
+      :kbd,
+      :var,
+      :cite,
+      :abbr,
+      :acronym,
+      :q,
+      :sub,
+      :sup,
+      :tt,
+      :i,
+      :b,
+      :big,
+      :small,
+      :object,
+      :map,
+      :form,
+      :label,
+      :select,
+      :optgroup,
+      :option,
+      :textarea,
+      :fieldset,
+      :legend,
+      :button,
+      :table,
+      :caption,
+      :colgroup,
+      :thead,
+      :tfoot,
+      :tbody,
+      :tr,
+      :th,
+      :td,
+      :h1,
+      :h2,
+      :h3,
+      :h4,
+      :h5,
+      :h6,
+      :strike,
+      :center,
+      :dir,
+      :noframes,
+      :basefont,
+      :u,
+      :menu,
+      :iframe,
+      :font,
+      :s,
+      :applet,
+      :isindex,
+      :script,
+      :a,
+      :td,
+      :p,
+      :h5,
+      :h3,
+      :li,
+      :div,
+      :pre,
+      :body,
+      :ol,
+      :h4,
+      :h2,
+      :object,
+      :legend,
+      :dl,
+      :h6,
+      :ul,
+      :form,
+      :h1
+    ]
+    
+    BLOCK_TAGS.each do |tag|
+      it "should have the #{tag} tag" do
+        @builder.send(tag, "foo")
+        @builder.to_s.should == "<#{tag}>foo</#{tag}>"
+      end
+
+      it "should contain the text inside the #{tag} tags" do
+        @builder.send(tag, "bar baz")
+        @builder.to_s.should == "<#{tag}>bar baz</#{tag}>"
+      end
+      
+      it "should take options with a string given" do
+        @builder.send(tag, "bar baz", :class => :something)
+      
+        @builder.to_s.should == "<#{tag} class=\"something\">bar baz</#{tag}>"
+      end
+      
+      it "should have a paragraph tag which takes a block" do
+        @builder.send(tag) do
+          text "foo"
+        end
+      
+        @builder.to_s.should == "<#{tag}>foo</#{tag}>"
+      end
+    end
   end
 end
 
