@@ -67,7 +67,9 @@ module Simply
 
     it "should set two options to a self-closing tag" do
       @builder.img :src => "foo", :alt => :some_text
-      @builder.to_s.should == "<img alt=\"some_text\" src=\"foo\" />"
+      out = @builder.to_s
+      out.should =~ /<img.*alt=\"some_text\".*\/>/
+      out.should =~ /<img.*src=\"foo\".*\/>/
     end
 
     it "should set options on a non-self closing tag (like a p)" do
