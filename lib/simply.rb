@@ -8,7 +8,15 @@ module Simply
       instance_eval(&block) if block_given?
     end
 
-    def p(options={ }, &block)
+    def p(*args, &block)
+      if args.first.is_a?(String)
+        block = lambda { text args.first }
+        options = args[1] || { }
+      else
+        options = args.first || { }
+      end
+
+      
       tag(:p, options, &block)
     end
 

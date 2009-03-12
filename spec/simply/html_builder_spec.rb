@@ -28,17 +28,19 @@ module Simply
     end
 
     it "should have a paragraph tag" do
-      pending "TODO: Make these part of an object which derives/overrides Simply methods" do
-        @builder.p "foo"
-        @builder.to_s.should == "<p>foo</p>"
-      end
+      @builder.p "foo"
+      @builder.to_s.should == "<p>foo</p>"
     end
 
     it "should contain the text inside the paragraph tags" do
-      pending "TODO: Make these part of an object which derives/overrides Simply methods" do
-        @builder.p "bar baz"
-        @builder.to_s.should == "<p>bar baz</p>"
-      end
+      @builder.p "bar baz"
+      @builder.to_s.should == "<p>bar baz</p>"
+    end
+
+    it "should take options with a string given" do
+      @builder.p "bar baz", :class => :something
+
+      @builder.to_s.should == "<p class=\"something\">bar baz</p>"
     end
 
     it "should have a paragraph tag which takes a block" do
