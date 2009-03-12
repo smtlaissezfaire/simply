@@ -114,28 +114,23 @@ module Simply
       @builder.h1 'Apples & Oranges'
       @builder.to_s.should == "<h1>Apples &amp; Oranges</h1>"
     end
+
+    it "should be able to generate the xhtml-transitional dtd declaration" do
+      @builder.xhtml_transitional
+      @builder.to_s.should include('<?xml version="1.0" encoding="UTF-8"?>')
+      @builder.to_s.should include('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+    end
+
+    it "should be able to generate the xhtml strict declaration" do
+      @builder.xhtml_strict
+      @builder.to_s.should include('<?xml version="1.0" encoding="UTF-8"?>')
+      @builder.to_s.should include('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">')
+    end
+
+    it "should be able to generate the xhtml frameset" do
+      @builder.xhtml_frameset
+      @builder.to_s.should include('<?xml version="1.0" encoding="UTF-8"?>')
+      @builder.to_s.should include('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">')
+    end
   end
 end
-
-#   def test_full_doc_transitional
-#     doc = mab { xhtml_transitional { head { title 'OKay' } } }    
-#     assert doc =~ /^<\?xml version="1.0" encoding="UTF-8"\?>/
-#     assert doc.include?(%{"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">})
-#     assert doc.include?(%{<title>OKay</title>})
-#   end
-
-#   def test_full_doc_strict
-#     doc = mab { xhtml_strict { head { title 'OKay' } } }
-#     assert doc =~ /^<\?xml version="1.0" encoding="UTF-8"\?>/
-#     assert doc.include?(%{"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">})
-#     assert doc.include?(%{<title>OKay</title>})
-#   end
-  
-#   def test_full_doc_frameset
-#     doc = mab { xhtml_frameset { head { title 'OKay' } } }
-#     assert doc =~ /^<\?xml version="1.0" encoding="UTF-8"\?>/
-#     assert doc.include?(%{"-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">})
-#     assert doc.include?(%{<title>OKay</title>})
-#   end
-# end
-
