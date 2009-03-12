@@ -103,6 +103,12 @@ module Simply
         @builder.to_s.should == "<#{tag}>foo</#{tag}>"
       end
     end
+
+    it "should raise an argument error when calling a closing tag with no options" do
+      lambda {
+        @builder.p
+      }.should raise_error(ArgumentError)
+    end
   end
 end
 
