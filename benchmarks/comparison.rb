@@ -7,6 +7,8 @@ require 'tagz'
 require 'builder'
 require 'haml'
 require 'erubis'
+require "nokogiri"
+require "erector"
 require File.dirname(__FILE__) + "/../lib/simply"
 
 MAX = (ARGV.shift || 10_000).to_i
@@ -112,6 +114,38 @@ def do_simply
   end
 end
 
+def do_nokogiri
+  Nokogiri do
+    html do
+      head do
+        title "happy title"
+      end
+
+      body do
+        h1 "happy heading"
+        a :href => "url" do
+          text "a link"
+        end
+      end
+    end
+  end
+end
+
+def do_erector
+  Erector::Widget.new do
+    html do
+      head do
+        title "happy title"
+      end
+
+      body do
+        h1 "happy heading"
+        a "a link", :href => "url"
+      end
+    end
+  end
+end
+
 
 x = do_tagz
 y = do_markaby
@@ -170,9 +204,21 @@ Benchmark.bmbm do |x|
     end
   end
 
+  x.report("nokogiri") do
+    for i in 0..MAX do
+      do_nokogiri
+    end
+  end
+
   x.report("simply") do
     for i in 0..MAX do
       do_simply
+    end
+  end
+
+  x.report("erector") do
+    for i in 0..MAX do
+      do_erector
     end
   end
 end
