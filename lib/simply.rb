@@ -181,7 +181,7 @@
 
 
 module Simply
-  class HtmlBuilder
+  module HTMLTags
     SELF_CLOSING_TAGS = [ 
       :base,
       :meta,
@@ -296,8 +296,12 @@ module Simply
       :form,
       :h1
     ]
+  end
+  
+  class HtmlBuilder
+    SELF_CLOSING_TAGS = HTMLTags::SELF_CLOSING_TAGS
+    BLOCK_TAGS        = HTMLTags::BLOCK_TAGS
     
-
     def initialize(&block)
       @out = ""
       instance_eval(&block) if block_given?
