@@ -182,7 +182,20 @@
 
 module Simply
   class HtmlBuilder
-    SELF_CLOSING_TAGS = [ :base, :meta, :link, :hr, :br, :param, :img, :area, :input, :col, :frame ]
+    SELF_CLOSING_TAGS = [ 
+      :base,
+      :meta,
+      :link,
+      :hr,
+      :br,
+      :param,
+      :img,
+      :area,
+      :input,
+      :col,
+      :frame
+    ]
+    
     BLOCK_TAGS = [
       :html,
       :head,
