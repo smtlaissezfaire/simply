@@ -19,11 +19,13 @@ module Simply
     BLOCK_TAGS.each do |tag|
       class_eval <<-HERE, __FILE__, __LINE__
         def #{tag}(*args, &block)
-          if args.first.is_a?(String)
-            block = lambda { clean_text args.first }
-            options = args[1] || { }
-          else
+          raise ArgumentError if !block_given? && args.empty?
+
+          if block_given? || args.first.is_a?(Hash)
             options = args.first || { }
+          else
+            block = lambda { clean_text args.first.to_s }
+            options = args[1] || { }
           end
 
           __tag(:#{tag}, options, &block)
@@ -51,6 +53,21 @@ module Simply
     #  Utilities
     #
     ####################
+
+    def locals=(hash={ })
+      def metaclass(&block)
+        meta = class << self; self; end
+        meta.instance_eval(&block)
+      end
+
+      hash.each do |key, value|
+        metaclass do
+          define_method key do
+            value
+          end
+        end
+      end
+    end
 
     def text(out)
       @out << out
