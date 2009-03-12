@@ -1,6 +1,8 @@
 module Simply
   dir = File.dirname(__FILE__) + "/simply"
-  
+
+  require "rubygems"
+  require "builder/xchar"
   require "#{dir}/html_tags"
   require "#{dir}/html_builder"
 end

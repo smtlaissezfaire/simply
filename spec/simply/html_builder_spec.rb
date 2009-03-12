@@ -109,15 +109,13 @@ module Simply
         @builder.p
       }.should raise_error(ArgumentError)
     end
+
+    it "should escape special html values" do
+      @builder.h1 'Apples & Oranges'
+      @builder.to_s.should == "<h1>Apples &amp; Oranges</h1>"
+    end
   end
 end
-
-  
-#   def test_escaping
-#     assert_equal "<h1>Apples &amp; Oranges</h1>", mab { h1 'Apples & Oranges' }
-#     assert_equal "<h1>Apples & Oranges</h1>", mab { h1 { 'Apples & Oranges' } }
-#     assert_equal "<h1 class=\"fruits&amp;floots\">Apples</h1>", mab { h1 'Apples', :class => 'fruits&floots' }
-#   end
 
 #   def test_full_doc_transitional
 #     doc = mab { xhtml_transitional { head { title 'OKay' } } }    

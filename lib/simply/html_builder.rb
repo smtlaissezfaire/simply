@@ -20,7 +20,7 @@ module Simply
       class_eval <<-HERE, __FILE__, __LINE__
         def #{tag}(*args, &block)
           if args.first.is_a?(String)
-            block = lambda { text args.first }
+            block = lambda { clean_text args.first }
             options = args[1] || { }
           else
             options = args.first || { }
@@ -39,6 +39,14 @@ module Simply
 
     def text(out)
       @out << out
+    end
+
+    def clean_text(out)
+      text html_escape(out)
+    end
+
+    def html_escape(out)
+      out.to_s.to_xs
     end
 
     def to_s
