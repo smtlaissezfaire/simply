@@ -13,7 +13,7 @@ module Simply
         def #{tag}(attributes={})
           self_closing_tag(:#{tag}, attributes)
         end
-      }
+      }, __FILE__, __LINE__
     end
     
     BLOCK_TAGS.each do |tag|
@@ -28,7 +28,7 @@ module Simply
 
           tag(:#{tag}, options, &block)
         end
-      }
+      }, __FILE__, __LINE__
     end
     
     ####################
