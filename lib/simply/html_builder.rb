@@ -9,15 +9,15 @@ module Simply
     end
 
     SELF_CLOSING_TAGS.each do |tag|
-      class_eval <<-HERE
+      class_eval %{
         def #{tag}(attributes={})
           self_closing_tag(:#{tag}, attributes)
         end
-      HERE
+      }
     end
     
     BLOCK_TAGS.each do |tag|
-      class_eval <<-HERE
+      class_eval %{
         def #{tag}(*args, &block)
           if args.first.is_a?(String)
             block = lambda { text args.first }
@@ -28,7 +28,7 @@ module Simply
 
           tag(:#{tag}, options, &block)
         end
-      HERE
+      }
     end
     
     ####################
