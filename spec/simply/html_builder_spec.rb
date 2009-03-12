@@ -51,9 +51,7 @@ module Simply
       @builder.to_s.should == "<p>foo</p>"
     end
 
-    SELF_CLOSING_TAGS = [ :base, :meta, :link, :hr, :br, :param, :img, :area, :input, :col, :frame ]
-
-    SELF_CLOSING_TAGS.each do |tag|
+    Simply::HtmlBuilder::SELF_CLOSING_TAGS.each do |tag|
       it "should have the tag #{tag}" do
         @builder.send(tag)
         @builder.to_s.should == "<#{tag} />"
@@ -79,110 +77,8 @@ module Simply
 
       @builder.to_s.should == '<p class="foo" name="something">foo</p>'
     end
-
-    BLOCK_TAGS = [
-      :html,
-      :head,
-      :title,
-      :style,
-      :script,
-      :noscript,
-      :body,
-      :div,
-      :p,
-      :ul,
-      :ol,
-      :li,
-      :dl,
-      :dt,
-      :dd,
-      :address,
-      :pre,
-      :blockquote,
-      :ins,
-      :del,
-      :a,
-      :span,
-      :bdo,
-      :em,
-      :strong,
-      :dfn,
-      :code,
-      :samp,
-      :kbd,
-      :var,
-      :cite,
-      :abbr,
-      :acronym,
-      :q,
-      :sub,
-      :sup,
-      :tt,
-      :i,
-      :b,
-      :big,
-      :small,
-      :object,
-      :map,
-      :form,
-      :label,
-      :select,
-      :optgroup,
-      :option,
-      :textarea,
-      :fieldset,
-      :legend,
-      :button,
-      :table,
-      :caption,
-      :colgroup,
-      :thead,
-      :tfoot,
-      :tbody,
-      :tr,
-      :th,
-      :td,
-      :h1,
-      :h2,
-      :h3,
-      :h4,
-      :h5,
-      :h6,
-      :strike,
-      :center,
-      :dir,
-      :noframes,
-      :basefont,
-      :u,
-      :menu,
-      :iframe,
-      :font,
-      :s,
-      :applet,
-      :isindex,
-      :script,
-      :a,
-      :td,
-      :p,
-      :h5,
-      :h3,
-      :li,
-      :div,
-      :pre,
-      :body,
-      :ol,
-      :h4,
-      :h2,
-      :object,
-      :legend,
-      :dl,
-      :h6,
-      :ul,
-      :form,
-      :h1
-    ]
     
-    BLOCK_TAGS.each do |tag|
+    Simply::HtmlBuilder::BLOCK_TAGS.each do |tag|
       it "should have the #{tag} tag" do
         @builder.send(tag, "foo")
         @builder.to_s.should == "<#{tag}>foo</#{tag}>"
