@@ -1,5 +1,5 @@
 module Simply
-  class HtmlBuilder
+  class HTMLBuilder
     include Locals
     
     unless defined?(SELF_CLOSING_TAGS)

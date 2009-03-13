@@ -10,6 +10,6 @@ module Simply
 end
 
 def Simply(options={}, &block)
-  builder = Simply::HtmlBuilder.new(options, &block)
+  builder = Simply::HTMLBuilder.new(options, &block)
   builder.to_s
 end

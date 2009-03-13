@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + "/../spec_helper"
 
 module Simply
-  describe HtmlBuilder do
+  describe HTMLBuilder do
     before(:each) do
-      @builder = HtmlBuilder.new
+      @builder = HTMLBuilder.new
     end
 
     it "should create a self-closing hr tag" do
@@ -51,7 +51,7 @@ module Simply
       @builder.to_s.should == "<p>foo</p>"
     end
 
-    Simply::HtmlBuilder::SELF_CLOSING_TAGS.each do |tag|
+    Simply::HTMLBuilder::SELF_CLOSING_TAGS.each do |tag|
       it "should have the tag #{tag}" do
         @builder.send(tag)
         @builder.to_s.should == "<#{tag} />"
@@ -78,7 +78,7 @@ module Simply
       @builder.to_s.should == '<p class="foo" name="something">foo</p>'
     end
     
-    Simply::HtmlBuilder::BLOCK_TAGS.each do |tag|
+    Simply::HTMLBuilder::BLOCK_TAGS.each do |tag|
       it "should have the #{tag} tag" do
         @builder.send(tag, "foo")
         @builder.to_s.should == "<#{tag}>foo</#{tag}>"

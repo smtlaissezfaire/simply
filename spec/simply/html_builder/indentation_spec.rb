@@ -1,23 +1,23 @@
 require File.dirname(__FILE__) + "/../../spec_helper"
 
 module Simply
-  describe HtmlBuilder, "with indentation" do
+  describe HTMLBuilder, "with indentation" do
     before(:each) do
-      @builder = HtmlBuilder.new(:indent => true)
+      @builder = HTMLBuilder.new(:indent => true)
     end
     
     it "should be indented when passed :indent => true" do
-      builder = HtmlBuilder.new(:indent => true)
+      builder = HTMLBuilder.new(:indent => true)
       builder.should be_indented
     end
     
     it "should not be indented when passed :indent => false" do
-      builder = HtmlBuilder.new(:indent => false)
+      builder = HTMLBuilder.new(:indent => false)
       builder.should_not be_indented
     end
     
     it "should not be indented by default" do
-      builder = HtmlBuilder.new
+      builder = HTMLBuilder.new
       builder.should_not be_indented
     end
     
