@@ -8,7 +8,7 @@ module Simply
   require "#{dir}/indentation"
 end
 
-def Simply(&block)
-  s = Simply::HtmlBuilder.new(&block)
-  s.to_s
+def Simply(options={}, &block)
+  builder = Simply::HtmlBuilder.new(options, &block)
+  builder.to_s
 end

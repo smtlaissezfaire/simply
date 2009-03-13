@@ -14,4 +14,32 @@ describe Simply, "the method" do
 
     s.should == "<br />"
   end
+  
+  it "should pass locals in" do
+    s = Simply :locals => {:foo => "foo"} do
+      text foo
+    end
+    
+    s.should == "foo"
+  end
+  
+  it "should pass indentation in" do
+    s = Simply :indent => true do
+      html do
+        body do
+          p "foo"
+        end
+      end
+    end
+    
+    s.should == (<<-HERE).chomp
+<html>
+  <body>
+    <p>
+      foo
+    </p>
+  </body>
+</html>
+HERE
+  end
 end
