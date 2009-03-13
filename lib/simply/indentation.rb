@@ -6,8 +6,10 @@ module Simply
       end
     end
     
-    DEFAULT_NUM_SPACES_TO_INDENT = 2
-    DEFAULT_INDENTATION_LEVEL    = 0
+    unless defined?(DEFAULT_INDENTATION_LEVEL)
+      DEFAULT_NUM_SPACES_TO_INDENT = 2
+      DEFAULT_INDENTATION_LEVEL    = 0
+    end
     
     def <<(text)
       out = empty? ? "" : "\n"

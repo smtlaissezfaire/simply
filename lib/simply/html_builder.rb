@@ -2,8 +2,10 @@ module Simply
   class HtmlBuilder
     include Locals
     
-    SELF_CLOSING_TAGS = HTMLTags::SELF_CLOSING_TAGS
-    BLOCK_TAGS        = HTMLTags::BLOCK_TAGS
+    unless defined?(SELF_CLOSING_TAGS)
+      SELF_CLOSING_TAGS = HTMLTags::SELF_CLOSING_TAGS
+      BLOCK_TAGS        = HTMLTags::BLOCK_TAGS
+    end
     
     def initialize(options={ }, &block)
       @out = ""
