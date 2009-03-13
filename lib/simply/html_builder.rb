@@ -10,7 +10,14 @@ module Simply
         self.locals = locals_hash
       end
       
+      @indented = true if options[:indent] == true
+      @out.extend Indentation if indented?
+      
       instance_eval(&block) if block_given?
+    end
+    
+    def indented?
+      @indented ? true : false
     end
 
     SELF_CLOSING_TAGS.each do |tag|
@@ -105,8 +112,14 @@ module Simply
 
     def __tag(tag_name, attributes={ }, &block)
       text __opening_tag(tag_name, attributes)
-      instance_eval(&block)
+      __eval_block(&block)
       text __closing_tag(tag_name)
+    end
+    
+    def __eval_block(&block)
+      @out.indent if indented?
+      instance_eval(&block)
+      @out.outdent if indented?
     end
 
     def __opening_tag(tag_name, attributes={ })
