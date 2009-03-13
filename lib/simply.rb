@@ -3,6 +3,7 @@ module Simply
 
   require "rubygems"
   require "builder/xchar"
+  require "#{dir}/locals"
   require "#{dir}/indentation"
   require "#{dir}/html_tags"
   require "#{dir}/html_builder"
