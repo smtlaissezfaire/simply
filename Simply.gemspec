@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{TODO}
   s.email = %q{scott@railsnewbie.com}
   s.extra_rdoc_files = ["README"]
-  s.files = ["VERSION.yml", "lib/simply", "lib/simply/html_builder.rb", "lib/simply/html_tags.rb", "lib/simply/indentation.rb", "lib/simply/locals.rb", "lib/simply/version.rb", "lib/simply.rb", "spec/simply", "spec/simply/html_builder", "spec/simply/html_builder/indentation_spec.rb", "spec/simply/html_builder/locals_spec.rb", "spec/simply/html_builder_spec.rb", "spec/simply/indentation_spec.rb", "spec/simply/simply_spec.rb", "spec/simply/version_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "README"]
+  s.files = ["Simply.gemspec", "VERSION.yml", "lib/simply", "lib/simply/html_builder.rb", "lib/simply/html_tags.rb", "lib/simply/indentation.rb", "lib/simply/locals.rb", "lib/simply/version.rb", "lib/simply.rb", "spec/simply", "spec/simply/html_builder", "spec/simply/html_builder/indentation_spec.rb", "spec/simply/html_builder/locals_spec.rb", "spec/simply/html_builder_spec.rb", "spec/simply/indentation_spec.rb", "spec/simply/simply_spec.rb", "spec/simply/version_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "README"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/smtlaissezfaire/simply}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
