@@ -1,6 +1,9 @@
 module Simply
   dir = File.dirname(__FILE__) + "/simply"
-
+  
+  require "#{dir}/version"
+  include Version
+  
   require "rubygems"
   require "builder/xchar"
   require "#{dir}/locals"
