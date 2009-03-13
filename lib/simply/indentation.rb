@@ -10,7 +10,10 @@ module Simply
     DEFAULT_INDENTATION_LEVEL    = 0
     
     def <<(text)
-      super("#{" " * indentation_level}#{text}\n")
+      out = empty? ? "" : "\n"
+      out << "#{" " * indentation_level}#{text}"
+      
+      super(out)
     end
     
     def indent(number_of_spaces = DEFAULT_NUM_SPACES_TO_INDENT)
