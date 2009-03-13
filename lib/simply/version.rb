@@ -1,9 +1,11 @@
 module Simply
   module Version
     unless defined?(Simply::VERSION)
-      MAJOR   = 0
-      MINOR   = 1
-      TINY    = 0
+      version_info = YAML.load(File.read(File.dirname(__FILE__) + "/../../VERSION.yml"))
+      
+      MAJOR   = version_info[:major]
+      MINOR   = version_info[:minor]
+      TINY    = version_info[:patch]
       VERSION = "#{MAJOR}.#{MINOR}.#{TINY}"
     end
   end
