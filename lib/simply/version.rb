@@ -1,3 +1,5 @@
+require "yaml"
+
 module Simply
   module Version
     unless defined?(Simply::VERSION)
