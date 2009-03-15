@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../../spec_helper"
 module Simply
   describe HTMLBuilder, "with locals" do
     before(:each) do
-      @builder = HTMLBuilder.new
+      @builder = HTMLBuilder.new(:indented => false)
     end
     
     it "should have access to a variables value" do
@@ -36,7 +36,7 @@ module Simply
     end
 
     it "should take locals in the constructor" do
-      builder = HTMLBuilder.new(:locals => { :foo => "bar", :bar => "baz" }) do
+      builder = HTMLBuilder.new(:locals => { :foo => "bar", :bar => "baz" }, :indented => false) do
         ul do
           li foo
           li bar

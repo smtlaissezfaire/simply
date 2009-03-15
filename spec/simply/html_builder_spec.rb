@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 module Simply
   describe HTMLBuilder do
     before(:each) do
-      @builder = HTMLBuilder.new
+      @builder = HTMLBuilder.new(:indented => false)
     end
 
     it "should create a self-closing hr tag" do

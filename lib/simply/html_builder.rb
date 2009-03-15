@@ -14,7 +14,7 @@ module Simply
         self.locals = locals_hash
       end
       
-      @indented = true if options[:indent] == true
+      @indented = options[:indented].equal?(false) ? false : true
       @out.extend Indentation if indented?
       
       instance_eval(&block) if block_given?
