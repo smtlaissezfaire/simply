@@ -143,7 +143,7 @@ def do_erector
         a "a link", :href => "url"
       end
     end
-  end
+  end.to_pretty
 end
 
 
