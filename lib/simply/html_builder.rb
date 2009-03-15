@@ -1,6 +1,7 @@
 module Simply
   class HTMLBuilder
     include Locals
+    include Escaping
     
     unless defined?(SELF_CLOSING_TAGS)
       SELF_CLOSING_TAGS = HTMLTags::SELF_CLOSING_TAGS
@@ -76,10 +77,6 @@ module Simply
 
     def clean_text(out)
       text html_escape(out)
-    end
-
-    def html_escape(out)
-      out.to_s.to_xs
     end
 
     def to_s

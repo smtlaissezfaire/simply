@@ -4,8 +4,7 @@ module Simply
   require "#{dir}/version"
   include Version
   
-  require "rubygems"
-  require "builder/xchar"
+  require "#{dir}/escaping"
   require "#{dir}/locals"
   require "#{dir}/indentation"
   require "#{dir}/html_tags"
