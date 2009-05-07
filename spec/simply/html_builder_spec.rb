@@ -132,5 +132,10 @@ module Simply
       @builder.to_s.should include('<?xml version="1.0" encoding="UTF-8"?>')
       @builder.to_s.should include('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">')
     end
+    
+    it "should be able to build an empty node" do
+      @builder.text "Add Text"
+      @builder.to_s.should == "Add Text"
+    end
   end
 end

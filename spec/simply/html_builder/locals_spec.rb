@@ -45,5 +45,16 @@ module Simply
 
       builder.to_s.should == "<ul><li>bar</li><li>baz</li></ul>"
     end
+    
+    it "should be able to pass in several sets of locals at different times" do
+      builder = HTMLBuilder.new(:locals => {:foo => "1"})
+      builder.locals = {:bar => "2"}
+      builder.ul do
+        li foo
+        li bar
+      end
+      
+      builder.to_s.should == "<ul><li>1</li><li>2</li></ul>"
+    end
   end
 end
