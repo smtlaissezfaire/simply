@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-PROJECT_NAME = "Simply"
+PROJECT_NAME = "simply"
 
 begin
   require 'jeweler'
