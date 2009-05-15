@@ -71,7 +71,7 @@ module Simply
     ####################
 
     def text(out)
-      @out << out
+      @out << out.to_s
     end
 
     def clean_text(out)

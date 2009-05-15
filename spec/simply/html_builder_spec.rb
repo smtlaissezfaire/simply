@@ -26,6 +26,13 @@ module Simply
       @builder.text "foo"
       @builder.to_s.should == "foo"
     end
+    
+    it "should call to_s on the object given to text" do
+      obj = Object.new
+      obj.stub!(:to_s).and_return "foo"
+      @builder.text obj
+      @builder.to_s.should == "foo"
+    end
 
     it "should have a paragraph tag" do
       @builder.p "foo"
