@@ -5,11 +5,11 @@ PROJECT_NAME = "simply"
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name        = PROJECT_NAME
-    s.summary     = "TODO"
+    s.name        = "simply"
+    s.summary     = "A minimal markaby-esq ruby templating language"
     s.email       = "scott@railsnewbie.com"
-    s.homepage    = "http://github.com/smtlaissezfaire/#{PROJECT_NAME.downcase}"
-    s.description = "TODO"
+    s.homepage    = "http://github.com/smtlaissezfaire/simply"
+    s.description = "A minimal markaby-esq ruby templating language"
     s.authors     = ["Scott Taylor"]
   end
 rescue LoadError
