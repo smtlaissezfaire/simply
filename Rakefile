@@ -5,7 +5,7 @@ PROJECT_NAME = "simply"
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name        = "#{PROJECT_NAME}"
+    s.name        = PROJECT_NAME
     s.summary     = "TODO"
     s.email       = "scott@railsnewbie.com"
     s.homepage    = "http://github.com/smtlaissezfaire/#{PROJECT_NAME.downcase}"
