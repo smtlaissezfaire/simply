@@ -47,7 +47,7 @@ module Simply
     end
     
     it "should be able to pass in several sets of locals at different times" do
-      builder = HTMLBuilder.new(:locals => {:foo => "1"})
+      builder = HTMLBuilder.new(:locals => {:foo => "1"}, :indented => false)
       builder.locals = {:bar => "2"}
       builder.ul do
         li foo
