@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott Taylor"]
   s.date = %q{2009-07-29}
-  s.description = %q{TODO}
+  s.description = %q{A minimal markaby-esq ruby templating language}
   s.email = %q{scott@railsnewbie.com}
   s.extra_rdoc_files = [
     "README"
@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.4}
-  s.summary = %q{TODO}
+  s.summary = %q{A minimal markaby-esq ruby templating language}
   s.test_files = [
     "spec/simply/html_builder/indentation_spec.rb",
      "spec/simply/html_builder/locals_spec.rb",
